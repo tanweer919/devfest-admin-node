@@ -2,12 +2,12 @@ const Attendee = require('../models/attendees');
 
 module.exports = (app) => {
   app.get('/attendee/total', (req, res) => {
-    Attendee.find({}).count((err, totalCount) => {
+    Attendee.find({}).countDocuments((err, totalCount) => {
       if(err) {
 
       }
       else {
-        Attendee.find({checkedOut: true}).count((err, count) => {
+        Attendee.find({checkedOut: true}).countDocuments((err, count) => {
           if(err) {
             res.status(404).send(JSON.stringify({
               success: false,
