@@ -6,7 +6,7 @@ const attendeeSchema = new mongoose.Schema(
     lastName: String,
     emailAddress: String,
     checkedOut: {type: Boolean, default: false},
-    time: Date
+    time: String
   }
 );
 module.exports = mongoose.model("Attendee", attendeeSchema);
