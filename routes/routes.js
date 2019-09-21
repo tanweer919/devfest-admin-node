@@ -21,6 +21,19 @@ module.exports = (app) => {
       }
     });
   });
+  app.get('/attendees', (req, res) => {
+    Attendee.find({}, (err, attendees) => {
+      if(err) {
+        res.status(404).send(JSON.stringify({
+          success: false,
+          message: 'There were some errors'
+        }));
+      }
+      else {
+        res.status(200).send(JSON.stringify(attendees));
+      }
+    });
+  });
   app.post('/checkout', (req, res) => {
     if(!req.body.orderId) {
       return res.status(404).send(JSON.stringify({
