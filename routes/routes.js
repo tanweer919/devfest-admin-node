@@ -21,8 +21,8 @@ module.exports = (app) => {
       }
     });
   });
-  app.get('/attendees', (req, res) => {
-    Attendee.find({}, (err, attendees) => {
+  app.get('/registered', (req, res) => {
+    Attendee.find({}, (err, registered) => {
       if(err) {
         res.status(404).send(JSON.stringify({
           success: false,
@@ -30,9 +30,21 @@ module.exports = (app) => {
         }));
       }
       else {
-        res.status(200).send(JSON.stringify({attendeeList: attendees}));
+        res.status(200).send(JSON.stringify({registeredList: registered}));
       }
     });
+    app.get('/attendees', (req, res) => {
+      Attendee.find({checkedOut: true}, (err, attendees) => {
+        if(err) {
+          res.status(404).send(JSON.stringify({
+            success: false,
+            message: 'There were some errors'
+          }));
+        }
+        else {
+          res.status(200).send(JSON.stringify({attendeeList: attendees}));
+        }
+      });
   });
   app.post('/checkout', (req, res) => {
     if(!req.body.orderId) {
