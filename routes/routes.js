@@ -30,7 +30,7 @@ module.exports = (app) => {
         }));
       }
       else {
-        res.status(200).send(JSON.stringify(attendees));
+        res.status(200).send(JSON.stringify({attendeeList: attendees}));
       }
     });
   });
