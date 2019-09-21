@@ -33,6 +33,7 @@ module.exports = (app) => {
         res.status(200).send(JSON.stringify({registeredList: registered}));
       }
     });
+  });
     app.get('/attendees', (req, res) => {
       Attendee.find({checkedOut: true}, (err, attendees) => {
         if(err) {
