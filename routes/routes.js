@@ -76,10 +76,7 @@ module.exports = (app) => {
       attendee.checkedOut = true;
       attendee.time = Date.now();
       attendee.save(() => {
-        res.status(200).send(JSON.stringify({
-          success: true,
-          message: 'Checkout successful'
-        }));
+        res.status(200).send(JSON.stringify(attendee));
       });
     });
   });
