@@ -1,4 +1,5 @@
 const Attendee = require('../models/attendees');
+const moment = require('moment');
 
 module.exports = (app) => {
   app.get('/attendee/total', (req, res) => {
@@ -74,7 +75,7 @@ module.exports = (app) => {
         }));
       }
       attendee.checkedOut = true;
-      attendee.time = Date.now();
+      attendee.time = moment.unix(utc).tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');;
       attendee.save(() => {
         res.status(200).send(JSON.stringify(attendee));
       });
