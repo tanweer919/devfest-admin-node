@@ -75,7 +75,7 @@ module.exports = (app) => {
         }));
       }
       attendee.checkedOut = true;
-      attendee.time = moment.unix(utc).tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');;
+      attendee.time = moment.unix(Date.now()).tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');;
       attendee.save(() => {
         res.status(200).send(JSON.stringify(attendee));
       });
