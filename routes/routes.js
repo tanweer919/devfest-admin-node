@@ -82,10 +82,4 @@ module.exports = (app) => {
       });
     });
   });
-
-  app.get('/ready', (req, res) => {
-    Attendee.updateMany({}, {$set: {checkedOut: false, time: null}}, (err, count) => {
-      res.status(200).send(JSON.stringify({count}));
-    })
-  })
 }
