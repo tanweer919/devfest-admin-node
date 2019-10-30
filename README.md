@@ -5,6 +5,7 @@ Node.js backend for Devfest Admin app.
 - Create a heroku app( **heroku create** ). **Note the base_url of newly generated app**.
 - Set environment variable MONGODBURI to your mongoDB database uri in app dashboard on heroku website.
 - Push whole code base to heroku servers( **git push heroku master** ).
+-created with the help of someone.
 
 ## Database schema
 ```
